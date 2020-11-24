@@ -8,42 +8,49 @@
 //7. Al termine dell apartita il software deve comunicare i punteggio, cioè il numero di volte che l'utente ha inserito un numero consentito.
 
 // 1, 2 ********//
-var number = [];
+var numberBomb = [];
 var userArray = [];
-console.log(userArray);
-// var numberBot = number[r];
-while(number.length < 16){
+//ciclo while per generare i 16 numeri random
+while(numberBomb.length < 16){
     var r = Math.floor(Math.random() * 100) + 1;
-    if(number.indexOf(r) === -1) {
-        number.push(r);
+    if(numberBomb.indexOf(r) === -1) {
+        numberBomb.push(r);
     }
 }
-console.log(number);
-
+console.log(numberBomb);
+//prova inserimento numero ripetuto:
+function numberSelected(numbs, arr) {
+    var   numberInserted = arr.length;
+    for (let i = 0; i < numberInserted; i++) {
+ 
+         if (arr[i] === numbs) {
+             return true;
+         }
+         
+        
+    }
+    return false;
+  }
 // PARTE  3 e 5 e 6 *********//
 var checkedNumber = false;
 //ciclo for per inserire i numeri del giocatore( max 84 giri)
 for (var i  = 0; i < 84; i++) {
-    var userNumber = Number(prompt('Inserisci un numero da uno a 100. Non ripetere lo stesso numero altirmenti perderai!'));
-    var numberInserted = userArray.push(userNumber);
-
+    var goodNumbers = Number(prompt('Inserisci un numero da uno a 100. Non ripetere lo stesso numero altirmenti perderai!'));
+    // var numberInserted = userArray.push(userNumber);
+    var numberChecked = numberSelected(goodNumbers, userArray);
     // condizioni di vincita o perdita
-    if ( userNumber == r || userNumber > 100 || isNaN(userNumber)) {
-        checkedNumber = true;
+    if (goodNumbers <= 100 && !isNaN(goodNumbers) && goodNumbers > 0 &&  numberChecked == false) {
+       userArray.push(goodNumbers)
+
+    } else {
+        alert('ALERT RITENTA DI NUOVO!')
     }
 
-    if (checkedNumber == true ) {
-        console.log('hai perso');
-        console.log('punteggio: hai fatto '+ i +' giri');
+    if ( numberBomb.includes(goodNumbers)) {
+        alert('hai perso!!');
+        alert('il tuo punteggio finale è '+ ''+i);
         break;    
-    } else {
-        console.log('continua a giocare');
-    }
-    console.log(userNumber);
-    
+    } 
+
 }
 
-// //prova inserimento numero ripetuto:
-//  function numberSelected(array, number) {
-     
-//  }
