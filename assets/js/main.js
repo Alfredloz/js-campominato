@@ -9,6 +9,9 @@
 
 // 1, 2 ********//
 var number = [];
+var userArray = [];
+console.log(userArray);
+// var numberBot = number[r];
 while(number.length < 16){
     var r = Math.floor(Math.random() * 100) + 1;
     if(number.indexOf(r) === -1) {
@@ -16,14 +19,31 @@ while(number.length < 16){
     }
 }
 console.log(number);
-// 3*********
-var chekedNumber= false;
-for (var i  = 0; i < 3; i++) {
-    var numberUtente = Number(prompt('inserisci un numero da 1 a 100, non ripetere lo stesso numero o perderai!'));
-    if (numberUtente === number){
-        chekedNumber = true;
-        alert('hai perso la partita');
-        break;
+
+// PARTE  3 e 5 e 6 *********//
+var checkedNumber = false;
+//ciclo for per inserire i numeri del giocatore( max 84 giri)
+for (var i  = 0; i < 84; i++) {
+    var userNumber = Number(prompt('Inserisci un numero da uno a 100. Non ripetere lo stesso numero altirmenti perderai!'));
+    var numberInserted = userArray.push(userNumber);
+
+    // condizioni di vincita o perdita
+    if ( userNumber == r || userNumber > 100 || isNaN(userNumber)) {
+        checkedNumber = true;
     }
-    console.log(numberUtente);
+
+    if (checkedNumber == true ) {
+        console.log('hai perso');
+        console.log('punteggio: hai fatto '+ i +' giri');
+        break;    
+    } else {
+        console.log('continua a giocare');
+    }
+    console.log(userNumber);
+    
 }
+
+// //prova inserimento numero ripetuto:
+//  function numberSelected(array, number) {
+     
+//  }
