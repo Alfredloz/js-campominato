@@ -21,7 +21,7 @@ switch (difficulty) {
         userDifficulty = 64;
         break;
     case 3:
-        userDifficulty = 3;
+        userDifficulty = 34;
         break;    
     default:
         alert('numero sbagliato ricarica la pagina');
