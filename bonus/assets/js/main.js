@@ -7,6 +7,27 @@
 //6. La partita termian quando il giocatore inserisce un numeri 'vietato' o raggiunge il numero massimo possibile di numeri consentiti.
 //7. Al termine dell apartita il software deve comunicare i punteggio, cioè il numero di volte che l'utente ha inserito un numero consentito.
 
+
+
+// !bonus!!
+alert('Benvenuti al gioco del campo minato. Prima di iniziare vi chiediamo di inserire la difficoltà');
+var difficulty = Number(prompt('inserisci la difficoltà. 1 per facile 2 per media e 3 per difficile'))
+var userDifficulty;
+switch (difficulty) {
+    case 1:
+        userDifficulty = 84;
+        break;
+    case 2:
+        userDifficulty = 64;
+        break;
+    case 3:
+        userDifficulty = 3;
+        break;    
+    default:
+        alert('numero sbagliato ricarica la pagina');
+        break;
+}
+
 // 1, 2 ********//
 var numberBomb = [];
 var userArray = [];
@@ -34,7 +55,7 @@ function numberSelected(numbs, arr) {
 // PARTE  3 e 5 e 6 *********//
 var checkedNumber = false;
 //ciclo for per inserire i numeri del giocatore( max 84 giri)
-for (var i  = 0; i < 84; i++) {
+for (var i  = 0; i < userDifficulty; i++) {
     var goodNumbers = Number(prompt('Inserisci un numero da uno a 100. Non ripetere lo stesso numero altirmenti perderai!'));
     // var numberInserted = userArray.push(userNumber);
     var numberChecked = numberSelected(goodNumbers, userArray);
@@ -43,15 +64,14 @@ for (var i  = 0; i < 84; i++) {
        userArray.push(goodNumbers)
 
     } else {
-        alert('ALERT RITENTA DI NUOVO!')
+        alert('ALERT RITENTA DI NUOVO!');
     }
-
     if ( numberBomb.includes(goodNumbers)) {
         alert('hai perso!!');
         alert('il tuo punteggio finale è '+ ''+i);
         break;    
     } 
-
+    alert('HAI VINTO CONGRATULAZIONI!')
 }
 
 
