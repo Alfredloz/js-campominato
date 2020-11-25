@@ -10,9 +10,14 @@
 
 
 // !bonus!!
-alert('Benvenuti al gioco del campo minato. Prima di iniziare vi chiediamo di inserire la difficoltà');
-var difficulty = Number(prompt('inserisci la difficoltà. 1 per facile 2 per media e 3 per difficile'))
+// messaggio di benvenuto !!!/
+alert('Benvenuti al gioco del camp minato!🌝');
+alert("Ci sono 16 bombe all'interno del vostro campo. La difficoltà dovete sceglierla voi. Buona Fortuna💥💥")
+//------creazione variabile---------//
+var difficulty = Number(prompt('inserisci la difficoltà. 1 per facile 2 per media e 3 per difficile', '1, 2, 3'))
 var userDifficulty;
+//----------------------------------//
+//Creazione difficoltà gioco!//
 switch (difficulty) {
     case 1:
         userDifficulty = 84;
@@ -27,7 +32,7 @@ switch (difficulty) {
         alert('numero sbagliato ricarica la pagina');
         break;
 }
-
+//-------------------------------//
 // 1, 2 ********//
 var numberBomb = [];
 var userArray = [];
@@ -40,40 +45,48 @@ while(numberBomb.length < 16){
 }
 console.log(numberBomb);
 //prova inserimento numero ripetuto:
+/**
+ * verifica ripetizione numero
+ * @param {int} numbs numero inserito
+ * @param {int} arr array in considerazione
+ * @return boolean  -  se c'è o non c'è il numero nell'array
+ */
 function numberSelected(numbs, arr) {
     var   numberInserted = arr.length;
     for (let i = 0; i < numberInserted; i++) {
  
          if (arr[i] === numbs) {
              return true;
-         }
-         
-        
+         }                
     } 
     return false;
   }
 // PARTE  3 e 5 e 6 *********//
 var checkedNumber = false;
 //ciclo for per inserire i numeri del giocatore( max 84 giri)
-for (var i  = 0; i < userDifficulty; i++) {
+for (var i  = 0; i <= userDifficulty; i++) {
     var goodNumbers = Number(prompt('Inserisci un numero da uno a 100. Non ripetere lo stesso numero altirmenti perderai!'));
     // var numberInserted = userArray.push(userNumber);
     var numberChecked = numberSelected(goodNumbers, userArray);
     // condizioni di vincita o perdita
     if (goodNumbers <= 100 && !isNaN(goodNumbers) && goodNumbers > 0 &&  numberChecked == false) {
        userArray.push(goodNumbers)
-
+        console.log(userArray); //numeri inseriti
     } else {
-        alert('ALERT RITENTA DI NUOVO!');
+        alert('NIENTE NUMERI UGUALI O SIMBOLI STRANI!!!!!💩💩💩');
     }
+    // 7   **********   //
     if ( numberBomb.includes(goodNumbers)) {
         alert('hai perso!!');
         alert('il tuo punteggio finale è '+ ''+i);
+        alert('controlla la console per vedere le bombe ed i tuoi numeri!');
         break;    
     } 
     if (i== userDifficulty) {
-        alert('congratulazioni hai vinto!!')
+        alert('CONGRATULAZIONI, HAI VINTO!🏆🏆🏆🏆');
+        alert('controlla la console per vedere le bombe ed i tuoi numeri!');
     }
 }
 
 
+    
