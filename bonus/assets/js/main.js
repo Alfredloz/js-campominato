@@ -71,7 +71,9 @@ for (var i  = 0; i < userDifficulty; i++) {
         alert('il tuo punteggio finale è '+ ''+i);
         break;    
     } 
-    alert('HAI VINTO CONGRATULAZIONI!')
+    if (i== userDifficulty) {
+        alert('congratulazioni hai vinto!!')
+    }
 }
 
 
